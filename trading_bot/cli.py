@@ -23,16 +23,16 @@ def main():
     args = parse_args()
 
     try:
-        # basic validation
-        validate_order_params(args.side, args.order_type, args.quantity, args.price)
-    except ValueError as e:
-        print(f"Invalid input: {e}")
-        sys.exit(1)
-
-    try:
         client = get_client()
     except Exception as e:
         print(f"Failed to create Binance client: {e}")
+        sys.exit(1)
+
+    try:
+        # basic validation; pass client+symbol to enable min-notional checks
+        validate_order_params(args.side, args.order_type, args.quantity, args.price, client=client, symbol=args.symbol)
+    except ValueError as e:
+        print(f"Invalid input: {e}")
         sys.exit(1)
 
     try:

@@ -1,8 +1,28 @@
 .env
-*.pyc
+.env.local
+.env.*.local
+*.py[cod]
 __pycache__/
+/.pytest_cache/
+# Logs
 logs/*.log
-.vscode/
+
+# Virtual environments
+.venv/
 venv/
 env/
+
+# IDEs
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Packages
 *.egg-info/
+.coverage
+htmlcov/
